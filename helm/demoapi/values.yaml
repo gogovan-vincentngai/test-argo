@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 api_split: 
   c2:
-    env_key: "iamc2-hi"
+    env_key: "iamc2"
   d2:
     env_key: "iamd2"
  
