@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
-    - host: ansible-awx.gogox.dev
+    - host: ansible-awx.gogox.dev.test
       http:
         paths:
           - backend:
