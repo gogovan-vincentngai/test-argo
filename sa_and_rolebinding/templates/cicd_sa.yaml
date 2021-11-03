@@ -1,0 +1,6 @@
+#Create SA account for CICD Namespace
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ggv-sa-cicd
+  namespace: cicd

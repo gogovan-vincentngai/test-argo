@@ -1,0 +1,49 @@
+#This is Cluster Role only need create once, but loop in subjects
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ggv-role-edit
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - "namespaces"
+  - "componentstatuses"
+  - "configmaps"
+  - "daemonsets"
+  - "deployments"
+  - "deployments/rollback"
+  - "deployments/scale"
+  - "events"
+  - "endpoints"
+  - "horizontalpodautoscalers"
+  - "ingress"
+  - "jobs"
+  - "limitranges"
+  - "namespaces"
+  - "pods"
+  - "pods/attach"
+  - "pods/exec"
+  - "pods/portforward"
+  - "pods/proxy"
+  - "pods/log"
+  - "resourcequotas"
+  - "replicasets"
+  - "replicationcontrollers"
+  - "replicationcontrollers/scale"
+  - "services"
+  - "services/proxy"
+  - "statefulsets"
+  - "statefulsets/scale"
+  verbs:
+  - "describe"
+  - "exec"
+  - "get"
+  - "list"
+  - "log"
+- apiGroups:
+  - ""
+  resources:
+  - "pods/exec"
+  verbs:
+  - "create"

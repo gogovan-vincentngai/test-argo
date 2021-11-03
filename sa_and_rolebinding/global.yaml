@@ -1,0 +1,59 @@
+ns_prefix:
+  - pf
+  - b2c
+  - b2b
+  - qa
+  - kafka
+
+crbs:
+  - "infra-tiller"
+  - "app-tiller"
+  - "ggv-sa-cicd"
+
+ggv_groups:
+  - k8s-devops@gogotech.hk
+
+crb:
+  ggv-sa-cicd:
+    rolebinding: ggv-sa-cicd
+    namespace: cicd
+    roleref_name: edit
+    subject_name: ggv-sa-cicd
+    subject_namespace: cicd
+
+namespace_reader_groups:
+  - "k8s-developer1@gogotech.hk"
+  - "k8s-developer2@gogotech.hk"
+  - "k8s-devops@gogotech.hk"
+  - "k8s-qa@gogotech.hk"
+  - "gke-backend-engineers@gogox.com"
+  - "gke-web-engineers@gogox.com"
+
+
+ggv_edit_groups:
+  - "k8s-developer2@gogotech.hk"
+
+ggv_edit_namespace:
+  - support
+
+ggv_edit_namespace_prefix:
+  - pf
+
+ggv_team_namespace_env_mapping_rolebindings:
+  - group_name: backend
+    email: gke-backend-engineers@gogox.com
+    role_name: ggv-role-edit
+    ns_prefix:
+      - pf
+  - group_name: web
+    email: gke-web-engineers@gogox.com
+    role_name: ggv-role-edit
+    ns_prefix:
+      - b2b
+      - b2c
+
+ggv_team_namesapce_mapping_rolebindings:
+  - group_name: backend-support
+    email: gke-backend-engineers@gogox.com
+    role_name: ggv-role-edit
+    namespace: support

@@ -1,0 +1,16 @@
+#This is Cluster Role only need create once, but loop in subjects
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ggv-cluster-admin
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  {{- range $groupname := $.Values.ggv_groups}}
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: {{ $groupname }}
+  namespace: kube-system
+  {{- end }}

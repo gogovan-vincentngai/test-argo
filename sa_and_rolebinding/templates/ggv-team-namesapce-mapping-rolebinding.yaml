@@ -1,0 +1,18 @@
+{{- range $team_namesapce_mapping := $.Values.ggv_team_namesapce_mapping_rolebindings }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ $team_namesapce_mapping.group_name }}
+  namespace: {{ $team_namesapce_mapping.namespace }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ $team_namesapce_mapping.role_name }}
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: {{ $team_namesapce_mapping.email }}
+  namespace: {{ $team_namesapce_mapping.namespace }}
+---
+{{- end }}

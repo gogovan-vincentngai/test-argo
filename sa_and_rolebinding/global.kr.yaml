@@ -1,0 +1,44 @@
+ns_prefix:
+  - be-gogox-service
+  - fe-admin-ui
+
+crbs:
+  - "infra-tiller"
+  - "app-tiller"
+  - "ggv-sa-cicd"
+
+ggv_groups:
+  - k8s-devops@gogotech.hk
+
+crb:
+  ggv-sa-cicd:
+    rolebinding: ggv-sa-cicd
+    namespace: cicd
+    roleref_name: edit
+    subject_name: ggv-sa-cicd
+    subject_namespace: cicd
+
+namespace_reader_groups:
+  - "gke-engineering-kr@gogotech.hk"
+  - "k8s-devops@gogotech.hk"
+
+
+ggv_edit_groups:
+  - "gke-engineering-kr@gogotech.hk"
+
+ggv_edit_namespace:
+  - gogox-service
+
+ggv_edit_namespace_prefix:
+  - be-gogox-service
+  - fe-admin-ui
+
+ggv_team_namespace_env_mapping_rolebindings:
+  - group_name: krdeveloper
+    email: gke-engineering-kr@gogotech.hk
+    role_name: ggv-role-edit
+    ns_prefix:
+      - be-gogox-service
+      - fe-admin-ui
+
+ggv_team_namesapce_mapping_rolebindings:

@@ -1,0 +1,15 @@
+#This is Cluster Role Binding only need create once, but loop in subjects
+#For case : https://www.notion.so/gogox/20210518-Fix-GKE-1-19-Remove-Basic-Auth-Issue-d6b9d874c7bd4157961fdd23e73da43b
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: gke-deployer
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: User
+  name: "{{ $.Values.gcp_sa }}"
+  namespace: kube-system
